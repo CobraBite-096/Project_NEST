@@ -1,0 +1,7 @@
+.venv/etc
+.venv/Scripts
+.venv/Share
+.venv/Lib
+.venv/package_info.json
+.venv/pyvenv.cfg
+.idea/
