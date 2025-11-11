@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT NEST Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'nest-blue': '#1D4ED8', //blue
+                        'nest-bg': '#F9FAFB',  //gray
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+        }
+        .message-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- Message Box for feedback -->
+    <div id="messageBox" class="message-box bg-green-500 text-white p-3 rounded-lg shadow-xl">
+        Processing...
+    </div>
+
+    <!-- Main Login Card -->
+    <div class="w-full max-w-sm bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+
+        <!-- Title -->
+        <h1 class="text-4xl font-extrabold text-center text-gray-900 tracking-wider mb-8">
+            PROJECT NEST
+        </h1>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-6">
+
+            <!-- Name Input -->
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nest-blue focus:border-nest-blue transition duration-150 shadow-sm"
+                       placeholder="Enter your name">
+            </div>
+
+            <!-- Password Input -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="password" name="password" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nest-blue focus:border-nest-blue transition duration-150 shadow-sm"
+                       placeholder="********">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-sm font-semibold text-white bg-nest-blue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-nest-blue transition duration-300 transform hover:scale-[1.01] active:scale-[0.99]">
+                Submit
+            </button>
+
+        </form>
+        
+        <p class="mt-6 text-xs text-center text-gray-500">
+            A secure project gateway.
+        </p>
+
+    </div>
+
+    <script>
+        
+        function showFeedback(message, type = 'success') {
+            const box = document.getElementById('messageBox');
+            box.textContent = message;
+            box.className = 'message-box show p-3 rounded-lg shadow-xl'; // Reset classes
+
+            if (type === 'success') {
+                box.classList.add('bg-green-500', 'text-white');
+            } else {
+                box.classList.add('bg-red-500', 'text-white');
+            }
+
+            // Hide the box after 3 seconds
+            setTimeout(() => {
+                box.classList.remove('show');
+            }, 3000);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+
+            console.log("Attempting login...");
+            console.log("Name:", name);
+
+            showFeedback(`Access Granted. Welcome, ${name}! Redirecting...`, 'success');
+
+            setTimeout(() => {
+                window.location.href = 'floor_selection.html'; 
+            }, 1000);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
