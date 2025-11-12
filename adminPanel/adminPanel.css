@@ -1,0 +1,153 @@
+body {
+            background: linear-gradient(135deg, #F9FAFB 0%, #EFF6FF 100%);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .floor-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+        .floor-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #1D4ED8;
+        }
+
+        .floor-plan-container {
+            width: 95vw;
+            max-width: 1000px;
+            aspect-ratio: 2 / 1;
+            position: relative;
+            margin: 0;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .floor-plan-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .nav-button {
+            position: absolute;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 12px;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #000;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition:
+                transform 0.2s ease-out,
+                box-shadow 0.2s ease-out,
+                background-color 0.2s ease-out;
+
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            white-space: nowrap;
+        }
+
+        .nav-button:hover {
+            background-color: #fff;
+            transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:active {
+            background-color: #eee;
+            transform: translate(-50%, -50%) translateY(0) scale(1.0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #btn-bedroom {
+            top: 56.5%;
+            left: 30.5%;
+        }
+
+        #btn-bathroom-left {
+            top: 36.5%;
+            left: 27.5%;
+            font-size: 12px;
+            padding: 6px 10px;
+        }
+
+        #btn-bathroom-right {
+            top: 12%;
+            left: 74.75%;
+            font-size: 8px;
+            padding: 4px 6px;
+        }
+
+        #btn-living-area {
+            top: 44%;
+            left: 49%;
+        }
+
+        #btn-kitchen {
+            top: 57%;
+            left: 70.5%;
+        }
+
+
+        .message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1D4ED8;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+            display: none;
+        }
+
+        .show {
+            opacity: 1 !important;
+            display: block !important;
+        }
+div#selected_rooms{
+    display:flex;
+    
+    align-self: auto;
+    font-weight: 750;
+    display: block;
+    position: absolute;
+    right: 5%;
+
+    
+}
+.roomSelect{
+    background: rgba(171, 238, 247, 0.95);
+    height: 5vh;
+    width: 12.5vw;
+    font-size: 18px;
+    text-align: center; 
+    border-radius: 8px;
+    border-color: #000;
+    border-width: 2.5px;
+    font-weight: 700;
+    
+
+    
+}

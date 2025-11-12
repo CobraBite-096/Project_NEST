@@ -111,7 +111,22 @@ for (let ii=0; ii <classes!.length; ii++){
             element.setAttribute("id", "selectedRoom-"+SELECTED_ROOMS[jj])
             element.classList.add("roomSelect")
             element.innerText= SELECTED_ROOMS[jj]
-            
+            const buttonNames = ["On", "Off", "Auto"]
+            for (let k=0; k<buttonNames.length; k++){
+                const subElement = document.createElement("div")
+                //subElement.classList.add PENDING
+                subElement.setAttribute("id", "roomControlOption-"+ele.id+buttonNames[k])
+                subElement.style.zIndex = "999";
+                subElement.style.cursor = "pointer";
+                subElement.addEventListener("click", ()=>{
+                    fetch("http://localhost:8888/componentControl", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({"room": roomId, "command": buttonNames[k]})
+                    }).then(() => console.log("Packet Sent!"))
+                })
+                element.appendChild(subElement)
+            }
             document.getElementById("selected_rooms").appendChild(element)
         }
     })

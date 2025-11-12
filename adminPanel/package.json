@@ -1,0 +1,9 @@
+{
+    "name": "project_nest",
+    "version": "0.0.1",
+    "description": "Proejct NEST - A truly smart home!",
+    "main": "bundle.js",
+    "scripts": {
+        "start": "tsc"
+    }
+}

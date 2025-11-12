@@ -5,3 +5,7 @@
 .venv/package_info.json
 .venv/pyvenv.cfg
 .idea/
+lib/
+lib64/
+bin/
+include/
