@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Selection - PROJECT NEST</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { 'nest-blue': '#1D4ED8' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50 font-sans">
+
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-10 tracking-wide">
+        Select Floor Access
+    </h1>
+
+    <div class="flex flex-col sm:flex-row gap-6 max-w-2xl w-full">
+
+        <!-- First Floor Card -->
+        <div id="first-floor" onclick="selectFloor('First Floor')"
+             class="flex-1 p-6 bg-white border border-gray-300 rounded-xl shadow-lg cursor-pointer transition duration-200 hover:shadow-xl hover:border-nest-blue flex flex-col items-center text-center">
+            <svg class="w-10 h-10 text-nest-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+            <h2 class="text-xl font-semibold text-gray-800">First Floor</h2>
+            <p class="text-sm text-gray-500 mt-1">Ground Floor Plan & Controls</p>
+        </div>
+
+        <!-- Second Floor Card -->
+        <div id="second-floor" onclick="selectFloor('Second Floor')"
+             class="flex-1 p-6 bg-white border border-gray-300 rounded-xl shadow-lg cursor-pointer transition duration-200 hover:shadow-xl hover:border-gray-500 flex flex-col items-center text-center">
+            <svg class="w-10 h-10 text-gray-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <h2 class="text-xl font-semibold text-gray-800">Second Floor</h2>
+            <p class="text-sm text-gray-500 mt-1">Future Development Area</p>
+        </div>
+
+    </div>
+
+    <!-- Message Box (optional feedback) -->
+    <div id="msg" class="fixed bottom-4 right-4 p-3 rounded-lg shadow-xl text-sm transition duration-300 opacity-0 bg-red-500 text-white"></div>
+
+    <script>
+        function selectFloor(floor) {
+            const msgBox = document.getElementById('msg');
+            msgBox.classList.remove('opacity-100', 'bg-red-500', 'bg-green-500');
+
+            if (floor === 'First Floor') {
+                // Redirect to the dashboard page we just created
+                msgBox.textContent = `Loading ${floor} Dashboard...`;
+                msgBox.classList.add('opacity-100', 'bg-green-500');
+                setTimeout(() => {
+                    window.location.href = 'first_floor_dashboard.html'; 
+                }, 500);
+            } else {
+                // Placeholder for Second Floor
+                msgBox.textContent = `${floor} is not yet available.`;
+                msgBox.classList.add('opacity-100', 'bg-red-500');
+                setTimeout(() => {
+                    msgBox.classList.remove('opacity-100');
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
