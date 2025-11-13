@@ -1,0 +1,36 @@
+#include <WiFi.h>
+#include <WebServer.h>
+#include <ArduinoJson.h>
+
+const char* ssid = "YourSSID";
+const char* password = "YourPassword";
+
+WebServer server(80);
+
+void handleControl() {
+  if (server.hasArg("plain")) {
+    StaticJsonDocument<200> doc;
+    DeserializationError error = deserializeJson(doc, server.arg("plain"));
+    if (!error) {
+      int pin = doc["pin"];
+      String state = doc["command"];
+      pinMode(pin, OUTPUT);
+      digitalWrite(pin, state == "On" ? HIGH : LOW);
+      server.send(200, "application/json", "{\"status\":\"ok\"}");
+      return;
+    }
+  }
+  server.send(400, "application/json", "{\"error\":\"bad request\"}");
+}
+
+void setup() {
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) delay(500);
+
+  server.on("/componentControl", HTTP_POST, handleControl);
+  server.begin();
+}
+
+void loop() {
+  server.handleClient();
+}
