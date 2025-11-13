@@ -118,6 +118,8 @@ for (let ii=0; ii <classes!.length; ii++){
             element.classList.add("roomSelect")
             element.innerText= SELECTED_ROOMS[jj]
             const buttonNames = ["On", "Off", "Auto"]
+            const subElementFrame = document.createElement("div")
+            subElementFrame.classList.add("subOptionFrames")
             for (let k=0; k<buttonNames.length; k++){
                 const subElement = document.createElement("button")
                 subElement.innerText = buttonNames[k]
@@ -129,11 +131,12 @@ for (let ii=0; ii <classes!.length; ii++){
                     fetch("http://localhost:8888/componentControl", {
                         method: "POST",
                         headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify({"room": roomId, "command": buttonNames[k]})
-                    }).then(() => console.log("Packet Sent!"))
+                        body: JSON.stringify({"room": SELECTED_ROOMS[jj], "command": buttonNames[k]})
+                    }).then(() => showFeedback(SELECTED_ROOMS[jj] + " sensor mode has switched to "+ buttonNames[k]))
                 })
-                element.appendChild(subElement)
+                subElementFrame.appendChild(subElement)
             }
+            element.appendChild(subElementFrame);
             document.getElementById("selected_rooms").appendChild(element)
         }
     })

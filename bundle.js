@@ -118,3 +118,10 @@ var _loop_1 = function (ii) {
 for (var ii = 0; ii < classes.length; ii++) {
     _loop_1(ii);
 }
+document.getElementById("finalizeSelections").addEventListener("click", function () {
+    fetch("http://localhost:8888/register", {
+        "method": "POST",
+        "headers": { "Content-Type": "application/json" },
+        "body": JSON.stringify({ "rooms": SELECTED_ROOMS })
+    }).then(function () { return showFeedback("Register request sent succesfully!", "success"); });
+});

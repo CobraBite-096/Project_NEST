@@ -81,18 +81,16 @@ body {
             left: 30.5%;
         }
 
-        #btn-bathroom-left {
+        #btn-bathroom {
             top: 36.5%;
             left: 27.5%;
             font-size: 12px;
             padding: 6px 10px;
         }
 
-        #btn-bathroom-right {
-            top: 12%;
-            left: 74.75%;
-            font-size: 8px;
-            padding: 4px 6px;
+        #btn-dining {
+            top: 39%;
+            left: 70%;
         }
 
         #btn-living-area {
@@ -218,4 +216,13 @@ button#btn-lighting {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
+}
+button#backToFloorSelect{
+    position: absolute;
+    right: 20%;
+}
+button#finalizeSelections{
+    position: absolute;
+    left: 60%;
+    bottom: -26.25%
 }

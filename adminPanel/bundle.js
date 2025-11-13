@@ -112,6 +112,8 @@ var _loop_1 = function (ii) {
             element.classList.add("roomSelect");
             element.innerText = SELECTED_ROOMS[jj];
             var buttonNames = ["On", "Off", "Auto"];
+            var subElementFrame = document.createElement("div");
+            subElementFrame.classList.add("subOptionFrames");
             var _loop_3 = function (k) {
                 var subElement = document.createElement("button");
                 subElement.innerText = buttonNames[k];
@@ -123,14 +125,15 @@ var _loop_1 = function (ii) {
                     fetch("http://localhost:8888/componentControl", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ "room": roomId, "command": buttonNames[k] })
-                    }).then(function () { return console.log("Packet Sent!"); });
+                        body: JSON.stringify({ "room": SELECTED_ROOMS[jj], "command": buttonNames[k] })
+                    }).then(function () { return showFeedback(SELECTED_ROOMS[jj] + " sensor mode has switched to " + buttonNames[k]); });
                 });
-                element.appendChild(subElement);
+                subElementFrame.appendChild(subElement);
             };
             for (var k = 0; k < buttonNames.length; k++) {
                 _loop_3(k);
             }
+            element.appendChild(subElementFrame);
             document.getElementById("selected_rooms").appendChild(element);
         };
         for (var jj = 0; jj < SELECTED_ROOMS.length; jj++) {

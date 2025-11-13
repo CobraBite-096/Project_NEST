@@ -81,18 +81,16 @@ body {
             left: 30.5%;
         }
 
-        #btn-bathroom-left {
+        #btn-bathroom {
             top: 36.5%;
             left: 27.5%;
             font-size: 12px;
             padding: 6px 10px;
         }
 
-        #btn-bathroom-right {
-            top: 12%;
-            left: 74.75%;
-            font-size: 8px;
-            padding: 4px 6px;
+        #btn-dining {
+            top: 39%;
+            left: 70%;
         }
 
         #btn-living-area {
@@ -103,6 +101,11 @@ body {
         #btn-kitchen {
             top: 57%;
             left: 70.5%;
+        }
+
+        #btn-door{
+            top: 60%;
+            left: 55%;
         }
 
 
@@ -133,13 +136,13 @@ div#selected_rooms{
     font-weight: 750;
     display: block;
     position: absolute;
-    right: 5%;
+    right: 2%;
 
     
 }
 .roomSelect{
     background: rgba(171, 238, 247, 0.95);
-    height: 5vh;
+    height: 11vh;
     width: 12.5vw;
     font-size: 18px;
     text-align: center; 
@@ -220,6 +223,19 @@ button#lighting-button:active {
   100% { transform: scale(1); }
 }
 
-.subOption{
+.subOptionFrames{
     display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.subOption{
+    justify-content: center;
+    display: flex;
+    width: 52px;
+    background-color: rgba(84, 192, 207,  0.95);
+    border-color: #000;
+    border-radius: 6px;
+    border-width: 2.5px;
+    position:relative;
 }

@@ -123,4 +123,11 @@ for (let ii=0; ii <classes!.length; ii++){
         }
     })
 }
+(<HTMLButtonElement>document.getElementById("finalizeSelections")).addEventListener("click", () => {
+    fetch("http://localhost:8888/register", {
+        "method": "POST",
+        "headers": {"Content-Type": "application/json"},
+        "body": JSON.stringify({"rooms": SELECTED_ROOMS})
+    }).then(() => showFeedback("Register request sent succesfully!", "success"))
+})
 

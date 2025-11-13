@@ -9,3 +9,8 @@ lib/
 lib64/
 bin/
 include/
+pyvenv.cfg
+Scripts/activate.bat
+Scripts/deactivate.bat
+Scripts/Activate.ps1
+Scripts/activate
