@@ -131,30 +131,28 @@ DEVICESCOORESPONDENCE_ARD1 = {
     "Dining": [2],
     "Kitchen":[3],
     "Lighting": [4],
-    "Door": [5]
+    "Door": [5],
+    "Bathroom": [6],
+    "Bedroom": [7] ,
+    "Living Area": [8]
 }
-
-DEVICESCOORESPONDENCE_ARD2 = {
-    "Bathroom": [2],
-    "Bedroom": [3] ,
-    "Living Area": [4]}
-
-
 
 @app.route("/componentControl", methods=["POST"])
 def componentControl():
     data = request.json
     print(data)
-    ARDUINO = None
-    DBToUse = DEVICESCOORESPONDENCE_ARD1
-    if data["room"] in DEVICESCOORESPONDENCE_ARD1.keys():
-        ARDUINO = ArduinoController(port='COM3')
-    else:
-        DBToUse = DEVICESCOORESPONDENCE_ARD2
-        ARDUINO = ArduinoController(port="COM4")
-    ARDUINO.connect()
-    for i in DBToUse[data["room"]]:
-        ARDUINO.send_command(i, data["command"])
+    for i in DEVICESCOORESPONDENCE_ARD1[data["room"]]:
+        requests.post("http:// < ESP URL >/componentControl", json=json.dumps({"pin": i, "command": data["command"] }))
+    #ARDUINO = None
+    #DBToUse = DEVICESCOORESPONDENCE_ARD1
+    #if data["room"] in DEVICESCOORESPONDENCE_ARD1.keys():
+    #    ARDUINO = ArduinoController(port='COM3')
+    #else:
+    #    DBToUse = DEVICESCOORESPONDENCE_ARD2
+    #    ARDUINO = ArduinoController(port="COM4")
+    #ARDUINO.connect()
+    #for i in DBToUse[data["room"]]:
+        #ARDUINO.send_command(i, data["command"])
 
     return jsonify({'status': 'received'})
 
