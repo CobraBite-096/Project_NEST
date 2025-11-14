@@ -69,6 +69,8 @@ function __INTERNALS_hideAllFloors(){
     document.getElementById("First FloorPlanView").style.display="none";
 }
 
+const ROOMS_WITH_SENSORS = ["Bedroom", "Living Area"]
+
 function showAreaFeedback(areaName: string, deselect=false) {
     let showText=`Selected Area: ${areaName}`
     if (deselect){showText = "De-".concat(showText)}
@@ -117,7 +119,8 @@ for (let ii=0; ii <classes!.length; ii++){
             element.setAttribute("id", "selectedRoom-"+SELECTED_ROOMS[jj])
             element.classList.add("roomSelect")
             element.innerText= SELECTED_ROOMS[jj]
-            const buttonNames = ["On", "Off", "Auto"]
+            let buttonNames = ["On", "Off"]
+            if (ROOMS_WITH_SENSORS.indexOf(SELECTED_ROOMS[jj]) != -1){buttonNames.push("Auto")}
             const subElementFrame = document.createElement("div")
             subElementFrame.classList.add("subOptionFrames")
             for (let k=0; k<buttonNames.length; k++){
