@@ -294,6 +294,9 @@ div#log{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-div#clearLog{
-    
+button#clearLog{
+    position: absolute;
+    left: 5%;
+    top: 25%;
 }
+   
